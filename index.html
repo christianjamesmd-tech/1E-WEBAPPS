@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMSU Student Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">O</div><div><h2>OMSU Portal</h2><small>Student Information Hub</small></div></div>
+  <nav>
+    <a href="#home" class="nav-link active">🏠 Home</a>
+    <a href="#announcements" class="nav-link">📢 Announcements</a>
+    <a href="#requirements" class="nav-link">📋 Requirements</a>
+    <a href="#dates" class="nav-link">📅 Important Dates</a>
+    <a href="#student" class="nav-link">👨‍🎓 Student</a>
+    <a href="admin.html" class="nav-link admin-link">⚙️ settings </a>
+  </nav>
+  <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div><p class="welcome">Welcome back!</p><h1 id="pageTitle">Home</h1></div>
+  <div class="student-mini"><div class="avatar" id="avatar">S</div><span id="studentName">Student</span></div>
+</header>
+
+<section id="home" class="page-section">
+  <div class="hero">
+    <div>
+      <span class="badge">STUDENT PORTAL</span>
+      <h2>Everything you need in one place.</h2>
+      <p>Check school announcements, requirements, and important dates without searching through different platforms.</p>
+      <a class="primary-btn" href="#announcements">View Announcements</a>
+    </div>
+    <div class="hero-icon">🎓</div>
+  </div>
+  <h2 class="section-title">Quick Access</h2>
+  <div class="card-grid">
+    <a class="info-card" href="#announcements"><div class="card-icon">📢</div><h3>Announcements</h3><p>See the latest student announcements.</p></a>
+    <a class="info-card" href="#requirements"><div class="card-icon">📋</div><h3>Requirements</h3><p>Check documents and school requirements.</p></a>
+    <a class="info-card" href="#dates"><div class="card-icon">📅</div><h3>Important Dates</h3><p>Keep track of deadlines and activities.</p></a>
+  </div>
+  <div class="content-card">
+    <span class="badge">LATEST</span><h2>Student Announcements</h2>
+    <div id="homeAnnouncements"></div>
+  </div>
+</section>
+
+<section id="announcements" class="page-section">
+  <div class="section-head"><span class="badge">UPDATES</span><h2>Announcements</h2><p>Latest information for students.</p></div>
+  <div id="announcementList" class="announcement-list"></div>
+</section>
+
+<section id="requirements" class="page-section">
+  <div class="section-head"><span class="badge">DOCUMENTS</span><h2>Requirements</h2><p>Common student documents and requirements.</p></div>
+  <div id="requirementList" class="card-grid"></div>
+</section>
+
+<section id="dates" class="page-section">
+  <div class="section-head"><span class="badge">CALENDAR</span><h2>Important Dates</h2><p>Keep track of upcoming school activities.</p></div>
+  <div id="dateList" class="dates-list"></div>
+</section>
+
+<section id="student" class="page-section">
+  <div class="section-head"><span class="badge">ACCOUNT</span><h2>Student Information</h2><p>Your portal account information.</p></div>
+  <div class="content-card profile-card">
+    <div class="profile-avatar" id="profileAvatar">S</div>
+    <div><h2 id="profileName">Student</h2><p><strong>Username:</strong> <span id="profileUsername">student</span></p><p><strong>Status:</strong> <span class="status">Active</span></p></div>
+  </div>
+</section>
+
+<footer><p>© 2026 OMSU Student Portal • For student information and announcements</p></footer>
+</main></div>
+<script src="script.js"></script>
+</body>
+</html>

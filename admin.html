@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - OMSU Portal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="adminSidebar">
+  <div class="brand"><div class="logo">O</div><div><h2>OMSU Portal</h2><small>Administrator</small></div></div>
+  <nav>
+    <a href="#dashboard" class="nav-link active">📊 Dashboard</a>
+    <a href="#adminAnnouncements" class="nav-link">📢 Announcements</a>
+    <a href="#adminRequirements" class="nav-link">📋 Requirements</a>
+    <a href="#adminDates" class="nav-link">📅 Important Dates</a>
+    <a href="#adminStudents" class="nav-link">👨‍🎓 Students</a>
+    <a href="index.html" class="nav-link">🌐 Student Portal</a>
+  </nav>
+  <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <button class="menu-btn" onclick="document.getElementById('adminSidebar').classList.toggle('open')">☰</button>
+  <div><p class="welcome">Administrator</p><h1>Admin Dashboard</h1></div>
+  <div class="student-mini"><div class="avatar">A</div><span>Admin</span></div>
+</header>
+
+<section id="dashboard" class="admin-section">
+  <div class="admin-hero">
+    <div>
+      <span class="badge">ADMINISTRATOR</span>
+      <h2>Manage the OMSU Student Portal</h2>
+      <p>Update announcements, requirements, important dates, and monitor registered student accounts from one place.</p>
+    </div>
+    <div class="hero-icon">⚙️</div>
+  </div>
+
+  <h2 class="section-title">Portal Overview</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-icon">📢</div><div><span>Total</span><strong id="statAnnouncements">0</strong><p>Announcements</p></div></div>
+    <div class="stat-card"><div class="stat-icon">📋</div><div><span>Total</span><strong id="statRequirements">0</strong><p>Requirements</p></div></div>
+    <div class="stat-card"><div class="stat-icon">📅</div><div><span>Total</span><strong id="statDates">0</strong><p>Important Dates</p></div></div>
+    <div class="stat-card"><div class="stat-icon">👨‍🎓</div><div><span>Total</span><strong id="statStudents">0</strong><p>Registered Students</p></div></div>
+  </div>
+
+  <div class="content-card">
+    <div class="section-row"><div><span class="badge">QUICK ACTIONS</span><h2>Manage Portal Content</h2></div></div>
+    <div class="quick-actions">
+      <a href="#adminAnnouncements" class="action-card"><span>📢</span><strong>Manage Announcements</strong><small>Add or update student notices</small></a>
+      <a href="#adminRequirements" class="action-card"><span>📋</span><strong>Manage Requirements</strong><small>Control required documents</small></a>
+      <a href="#adminDates" class="action-card"><span>📅</span><strong>Manage Important Dates</strong><small>Update deadlines and activities</small></a>
+      <a href="#adminStudents" class="action-card"><span>👨‍🎓</span><strong>View Students</strong><small>See registered accounts</small></a>
+    </div>
+  </div>
+</section>
+
+<section id="adminAnnouncements" class="admin-section">
+<div class="section-head"><span class="badge">CONTENT MANAGEMENT</span><h2>Announcements</h2><p>Add, edit, or delete announcements shown to students.</p></div>
+<div class="admin-form content-card">
+  <h3 id="annFormTitle">Add New Announcement</h3>
+  <input id="annTitle" placeholder="Announcement title">
+  <textarea id="annText" placeholder="Announcement details"></textarea>
+  <input id="annDate" type="date">
+  <div><button class="primary-btn violet-btn" onclick="saveAnnouncement()">➕ Save Announcement</button><button class="secondary-btn hidden" id="cancelAnn" onclick="cancelAnnouncement()">Cancel Edit</button></div>
+</div>
+<div id="adminAnnList" class="admin-list"></div>
+</section>
+
+<section id="adminRequirements" class="admin-section">
+<div class="section-head"><span class="badge">CONTENT MANAGEMENT</span><h2>Requirements</h2><p>Add, edit, or delete student requirements.</p></div>
+<div class="admin-form content-card">
+  <h3 id="reqFormTitle">Add New Requirement</h3>
+  <input id="reqTitle" placeholder="Requirement name">
+  <textarea id="reqText" placeholder="Requirement description"></textarea>
+  <select id="reqStatus"><option>Required</option><option>Optional</option><option>Check Office</option></select>
+  <div><button class="primary-btn violet-btn" onclick="saveRequirement()">➕ Save Requirement</button><button class="secondary-btn hidden" id="cancelReq" onclick="cancelRequirement()">Cancel Edit</button></div>
+</div>
+<div id="adminReqList" class="admin-list"></div>
+</section>
+
+<section id="adminDates" class="admin-section">
+<div class="section-head"><span class="badge">CONTENT MANAGEMENT</span><h2>Important Dates</h2><p>Add, edit, or delete important dates.</p></div>
+<div class="admin-form content-card">
+  <h3 id="dateFormTitle">Add New Important Date</h3>
+  <input id="dateTitle" placeholder="Event or deadline">
+  <textarea id="dateText" placeholder="Date details"></textarea>
+  <input id="dateValue" type="date">
+  <div><button class="primary-btn violet-btn" onclick="saveDate()">➕ Save Important Date</button><button class="secondary-btn hidden" id="cancelDate" onclick="cancelDate()">Cancel Edit</button></div>
+</div>
+<div id="adminDateList" class="admin-list"></div>
+</section>
+
+<section id="adminStudents" class="admin-section">
+<div class="section-head"><span class="badge">STUDENT ACCOUNTS</span><h2>Registered Students</h2><p>View student accounts registered on this browser.</p></div>
+<div class="content-card">
+  <div class="table-wrap">
+    <table class="student-table">
+      <thead><tr><th>Name</th><th>Username</th><th>Status</th></tr></thead>
+      <tbody id="studentTableBody"></tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<footer><p>© 2026 OMSU Student Portal • Administrator Dashboard</p></footer>
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
